@@ -1,0 +1,9 @@
+**/*.zip
+.idea
+*.zip
+vendor
+**/vendor
+*.lock
+*.iml
+
+.DS_Store
