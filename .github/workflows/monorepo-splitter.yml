@@ -35,7 +35,7 @@ jobs:
       matrix:
         package: ${{fromJson(needs.provide_packages_json.outputs.matrix)}}
     steps:
-      - id: check matrix
+      - id: check-matrix
         run: echo ${{ matrix.package }}
       - uses: actions/checkout@v2
 
