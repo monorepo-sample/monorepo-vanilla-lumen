@@ -39,6 +39,7 @@ jobs:
 
 
     steps:
+      - run: echo ${{ echo matrix.package }}
       - uses: actions/checkout@v2
 
       - name: Monorepo Split of ${{ matrix.package }}
