@@ -14,14 +14,15 @@ jobs:
 
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.1
           coverage: none
 
       - uses: "ramsey/composer-install@v1"
 
       # get package json list
       - id: output_data
-        run: echo "::set-output name=matrix::$(vendor/bin/monorepo-builder packages-json)"
+#        run: echo "::set-output name=::"
+        run: echo "{matrix}={$(vendor/bin/monorepo-builder packages-json)}" >> $GITHUB_OUTPUT
 
     outputs:
       matrix: ${{ steps.output_data.outputs.matrix }}
