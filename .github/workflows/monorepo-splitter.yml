@@ -22,27 +22,21 @@ jobs:
       # get package json list
       - id: output_data
 #        run: echo "::set-output name=::"
-        run: | 
-          echo "{matrix}={$(vendor/bin/monorepo-builder packages-json)}" >> $GITHUB_OUTPUT
-          echo $GITHUB_OUTPUT
+        run: echo "{matrix}={$(vendor/bin/monorepo-builder packages-json)}" >> $GITHUB_OUTPUT
 
     outputs:
       matrix: ${{ steps.output_data.outputs.matrix }}
 
   split_monorepo:
     needs: provide_packages_json
-
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         package: ${{fromJson(needs.provide_packages_json.outputs.matrix)}}
-#        package: ${{fromJson(needs.provide_packages_json.outputs.matrix)}}
-
-
     steps:
       - id: check matrix
-        run: echo ${{ echo matrix.package }}
+        run: echo ${{ matrix.package }}
       - uses: actions/checkout@v2
 
       - name: Monorepo Split of ${{ matrix.package }}
