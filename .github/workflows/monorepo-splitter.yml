@@ -36,7 +36,8 @@ jobs:
         package: ${{fromJson(needs.provide_packages_json.outputs.matrix)}}
     steps:
       - uses: actions/checkout@v2
-
+      - id: check-package-matrix
+        run: echo ${{ matrix.package }}
       - name: Monorepo Split of ${{ matrix.package }}
         uses: symplify/github-action-monorepo-split@master
         env:
