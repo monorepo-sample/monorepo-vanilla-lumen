@@ -16,6 +16,7 @@ $faker = Faker\Factory::create();
 // Create Router instance
 $router = new \Bramus\Router\Router();
 
+$randomVariable = "this is a random vairable added.";
 // Define routes
 $router->get('/', function () use ($request) {
     $request->setUrl('http://app/api/authors');
